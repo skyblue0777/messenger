@@ -16,7 +16,8 @@ def load_chat_history():
 def save_message(username, message):
     """메시지를 CSV 파일에 저장합니다."""
     df = load_chat_history()
-    df = df.append({"timestamp": datetime.now(), "username": username, "message": message}, ignore_index=True)
+    new_row = pd.DataFrame([{"timestamp": datetime.now(), "username": username, "message": message}])
+    df = pd.concat([df, new_row], ignore_index=True)
     df.to_csv(CSV_FILE, index=False)
 
 def display_message(username, message, is_own_message):
