@@ -1,3 +1,4 @@
 streamlit
 pandas>=1.4.3
 datetime
+streamlit-autorefresh
